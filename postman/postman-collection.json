@@ -804,8 +804,10 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Successful config server connection\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    pm.expect(responseBody).to.include('file:config-files/');\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson.name).to.eql('discovery-server');\r",
+									"    pm.expect(responseJson.profiles).to.include('docker');\r",
+									"    pm.expect(responseJson.propertySources.length).to.be.above(0);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Status code is 200\", function (){\r",

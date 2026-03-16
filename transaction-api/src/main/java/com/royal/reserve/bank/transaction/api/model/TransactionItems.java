@@ -22,5 +22,6 @@ public class TransactionItems {
     private Long id;
     private String assetCode;
     private String assetName;
+    @Column(name = "asset_value")
     private int value;
 }

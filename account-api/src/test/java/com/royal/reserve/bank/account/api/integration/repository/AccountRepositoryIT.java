@@ -1,4 +1,4 @@
-package com.royal.reserve.bank.account.api.unit.repository;
+package com.royal.reserve.bank.account.api.integration.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.royal.reserve.bank.account.api.controller.AccountController;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Testcontainers
-class AccountRepositoryTest {
+class AccountRepositoryIT {
 
     @Container
     static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:6.0.5");

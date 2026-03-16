@@ -73,11 +73,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Gateway forwards authenticated requests\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -95,7 +92,7 @@
 						"disableCookies": true
 					},
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -104,9 +101,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{url}}/api/account",
 							"host": [
 								"{{url}}"
+							],
+							"path": [
+								"api",
+								"account"
 							]
 						}
 					},
@@ -119,11 +120,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Config server is reachable\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -131,7 +129,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -140,14 +138,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/config-server/account-api/default",
+							"raw": "{{url}}/config-server/account-api/docker",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"config-server",
 								"account-api",
-								"default"
+								"docker"
 							]
 						}
 					},
@@ -160,11 +158,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Discovery server is reachable\", function () {\r",
+									"    pm.expect([200, 401]).to.include(pm.response.code);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -172,7 +167,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [],
 						"url": {
 							"raw": "{{url}}/discovery-server",
@@ -193,11 +188,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Account API is reachable\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -205,7 +197,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -233,11 +225,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Asset management API is reachable\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -245,7 +234,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -254,13 +243,19 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/asset-management",
+							"raw": "{{url}}/api/asset-management?assetCode=SEC",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"asset-management"
+							],
+							"query": [
+								{
+									"key": "assetCode",
+									"value": "SEC"
+								}
 							]
 						}
 					},
@@ -273,11 +268,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Notification API is reachable\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -285,7 +277,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -313,11 +305,8 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Service is listening\", function () {\r",
-									"    var responseBody = pm.response.text();\r",
-									"    var statusCodes = [404, 500];\r",
-									"    pm.expect(responseBody).not.to.include('Could not send request');\r",
-									"    pm.expect(statusCodes).not.to.include(pm.response.code);\r",
+									"pm.test(\"Transaction API rejects unsupported methods\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -325,7 +314,7 @@
 						}
 					],
 					"request": {
-						"method": "HEAD",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
@@ -711,7 +700,7 @@
 									"    pm.expect(responseBody).to.include('Transaction completed successfully!');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code is 200\", function (){\r",
+									"pm.test(\"Status code is 201\", function (){\r",
 									"    pm.response.to.have.status(201);\r",
 									"});"
 								],
@@ -765,7 +754,7 @@
 									"    pm.expect(responseBody).to.include('Oops! Something went wrong');\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Status code is 200\", function (){\r",
+									"pm.test(\"Status code is 201\", function (){\r",
 									"    pm.response.to.have.status(201);\r",
 									"});"
 								],

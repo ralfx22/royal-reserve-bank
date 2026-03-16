@@ -208,7 +208,8 @@ To set up Grafana with Prometheus as the data source and configure a dashboard u
 - Open your web browser and access the Prometheus by navigating to `http://localhost:9090` (or the appropriate URL if you have a different setup).
 - Check the status of the services in Prometheus by navigating to status and targets.
 - Open your web browser and access the Grafana by navigating to `http://localhost:3000`.
-- Log in to Grafana using your username and password set in the Docker Compose YAML file. The default credentials are (admin/password).
+- Log in to Grafana using your username and password set in the Docker Compose YAML file. On a fresh start, the default credentials are `admin` / `password`.
+- Grafana stores its state in [`./data/grafana`](/Users/ralf/Workspace/royal-reserve-bank/data/grafana), so after the first startup the password comes from the persisted database, not from `docker-compose.yml`. If the default credentials stop working, reset them with `docker exec grafana grafana cli admin reset-admin-password password`.
 - Once logged in, go to the Connections section in the left-hand menu.
 - In the Connections section, select the Data Sources option in the left-hand panel.
 - Click on the "Add data source" button to add a new data source for Prometheus.

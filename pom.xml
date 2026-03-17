@@ -106,9 +106,15 @@
                 <configuration>
                     <from>
                         <image>eclipse-temurin:${eclipse-temurin.version}</image>
+                        <platforms>
+                            <platform>
+                                <architecture>amd64</architecture>
+                                <os>linux</os>
+                            </platform>
+                        </platforms>
                     </from>
                     <to>
-                        <image>registry.hub.docker.com/0145136798/${project.artifactId}</image>
+                        <image>registry.hub.docker.com/ralfx22/rrb-${project.artifactId}</image>
                     </to>
                 </configuration>
             </plugin>

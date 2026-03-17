@@ -2,7 +2,7 @@ version: "3.8"
 services:
   account-api:
     container_name: account-api
-    image: 0145136798/account-api
+    image: ralfx22/rrb-account-api
     pull_policy: always
     environment:
       spring.profiles.active: docker
@@ -23,7 +23,7 @@ services:
       - ./data/account-api-mongo:/data/mongo
 
   api-gateway:
-    image: 0145136798/api-gateway
+    image: ralfx22/rrb-api-gateway
     container_name: api-gateway
     pull_policy: always
     ports:
@@ -40,7 +40,7 @@ services:
 
   asset-management-api:
     container_name: asset-management-api
-    image: 0145136798/asset-management-api
+    image: ralfx22/rrb-asset-management-api
     pull_policy: always
     environment:
       spring.profiles.active: docker
@@ -68,7 +68,7 @@ services:
 
   config-server:
     container_name: config-server
-    image: 0145136798/config-server
+    image: ralfx22/rrb-config-server
     pull_policy: always
     ports:
       - "8888:8888"
@@ -82,7 +82,7 @@ services:
       - zipkin
 
   discovery-server:
-    image: 0145136798/discovery-server
+    image: ralfx22/rrb-discovery-server
     container_name: discovery-server
     pull_policy: always
     ports:
@@ -112,7 +112,7 @@ services:
 
   notification-api:
     container_name: notification-api
-    image: 0145136798/notification-api
+    image: ralfx22/rrb-notification-api
     pull_policy: always
     environment:
       spring.profiles.active: docker
@@ -165,7 +165,7 @@ services:
 
   transaction-api:
     container_name: transaction-api
-    image: 0145136798/transaction-api
+    image: ralfx22/rrb-transaction-api
     pull_policy: always
     environment:
       spring.profiles.active: docker

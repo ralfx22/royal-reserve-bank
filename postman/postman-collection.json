@@ -828,12 +828,10 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8080/config-server/discovery-server/docker",
-							"protocol": "http",
+							"raw": "{{url}}/config-server/discovery-server/docker",
 							"host": [
-								"localhost"
+								"{{url}}"
 							],
-							"port": "8080",
 							"path": [
 								"config-server",
 								"discovery-server",
